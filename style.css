@@ -218,6 +218,12 @@ html,body{
     font-weight: bold;
 }
 
+.winninglogodiv {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .container {
@@ -342,5 +348,11 @@ html,body{
     .gameselectiontext {
         text-transform: uppercase;
         font-weight: bold;
+    }
+
+    .winninglogodiv {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 }
