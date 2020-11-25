@@ -1,135 +1,88 @@
-<script>
-    
-    // Function to randomly generate computer game entries
-    function computerPlay() {
-        randomGameValue = Math.floor(Math.random() * 3);
-        if (randomGameValue == "0") {
-            return "rock";
-        }
-        else if (randomGameValue == "1") {
-            return "paper";
-        }
-        else {
-            return "scissors";
-        }
-    }
 
-    // Main game function
-    function playRound() {
-        // Prompt player for selection
-        let playerSelection = prompt("Rock, Paper, or Scissors?")
-        // Generate computer selection
-        const computerSelection = computerPlay();
-        // Convert player entry to string
-        let playerSelectionString = String(playerSelection);
-        // Convert player selection to all lowercase
-        let playerSelectionLowercase = playerSelectionString.toLowerCase();
-        // If player selection is rock
-        if (playerSelectionLowercase === "rock") {
-            // If computer selection is rock then draw
-            if (computerSelection === "rock") {
-                console.log("Draw!");
-                return "draw";
-            }
-            // If computer selection is paper then lose as paper beats rock
-            else if (computerSelection === "paper") {
-                console.log("You lose - paper beats rock!")
-                return "lose";
-            }
-            // If computer selection is scissors then win as scissors beats paper
-            else {
-                console.log ("You win - scissors beats paper!")
-                return "win";
-            }
-        }
-        // Else if player selection is paper
-        else if (playerSelectionLowercase === "paper") {
-            // If computer selection is rock then win as paper beats rock
-            if (computerSelection === "rock") {
-                console.log("You win - paper beats rock!")
-                return "win";
-            }
-            // If computer selection is paper then draw
-            else if (computerSelection === "paper") {
-                console.log("Draw!")
-                return "draw";
-            }
-            // If computer selection is scissors then lose as scissors beats paper
-            else {
-                console.log("You lose - scissors beats paper!")
-                return "lose";
-            }
-        }
-        // Else (player selected scissors)
-        else if (playerSelectionLowercase === "scissors") {
-            // If computer selection is rock then lose as rock beats scissors
-            if (computerSelection === "rock") {
-                console.log("You lose - rock beats scissors!")
-                return "lose";
-            }
-            // If computer selection is paper then win as scissors beats paper
-            else if (computerSelection === "paper") {
-                console.log("You win - scissors beats paper!")
-                return "win";
-            }
-            // If computer selection is scissors then draw
-            else {
-                console.log("Draw!")
-                return "draw";
-            }
-        }
-        else {
-            console.log("Invalid entry, please try again.")
-            return null;
-        }
-    }
+<!DOCTYPE html>
+<html>
 
-    // Iterative function to score multiple games
-    function game() {
-        // Initialise player score to zero
-        let playerScore = 0;
-        // Initialise computer score to zero
-        let computerScore = 0;
-        // Initialise games played to zero
-        let gamesPlayed = 0;
-        // Initiate while loop for 5 games
-        while (gamesPlayed < 5) {
-            gamesPlayed++;
-            // For each game, check the returned result
-            roundResult = playRound();
-            // If result was win increase player score by 1
-            if (roundResult === "win") {
-                playerScore++;
-                console.log(`Player:${playerScore} Computer:${computerScore}`)
-            }
-            // If result was lose increase computer score by 1
-            else if (roundResult === "lose") {
-                computerScore++;
-                console.log(`Player:${playerScore} Computer:${computerScore}`)
-            }
-            // If result was draw increase both scores by 1
-            else if (roundResult === "draw") {
-                playerScore++;
-                computerScore++;
-                console.log(`Player:${playerScore} Computer:${computerScore}`)
-            }
-            // If null value returned
-            else {
-                gamesPlayed--;
-            }
-        }
-        // After 5 games, determine who won, or if it was a draw
-        if (playerScore > computerScore) {
-            console.log(`You won ${playerScore}:${computerScore}!`)
-        }
-        else if (computerScore > playerScore) {
-            console.log(`The computer won ${computerScore}:${playerScore}!`)
-        }
-        else {
-            console.log(`The game was tied ${playerScore}:${computerScore}!`)
-        }
-    }
+<head>
+    <meta charset="utf-8">
+    <title>Rock, Paper, Scissors!</title>
+    <meta name="author" content="Tom McErlean">
+    <meta name="description" content="A simple game of rock, paper, scissors.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    // Starts the game
-    game();
-</script>
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+    <audio id="startbuttonsound" src="sounds/zapsplat_multimedia_button_click_005_53866.mp3"></audio>
+    <audio id="winnersound" src="sounds/Cheering-SoundBible.com-1115515042.wav"></audio>
+    <audio id="losersound" src="sounds/Sad-SoundBible.com-759843766.wav"></audio>
+    <div class="container" id="startcontainer">
+        <button id="startbutton">Start Game</button>
+    </div>
+    <script src="main.js"></script>
+    <div class="container" id="endcontainer">
+        <div class="topcontainer">
+            <h1 id="gameh1"></h1>
+        </div>
+        <div class="gamecontainer">
+            <div class="playercontainer">
+                <h1 class="playerh1">Player</h1>
+                <div class="playerinformation">
+                    <div class="playerlogo">
+                        <img class="logo" src="images/user.png">
+                    </div>
+                    <div class="playerscore">
+                        <p class="score" id="playerscore">Score: 0</p>
+                    </div>
+                </div>
+                <div class="gameselections">
+                    <div class="gameselection" id="rockdiv">
+                        <p class="gameselectiontext" id="rockselection">Rock</p>
+                        <img class="selection" id ="rockimg" src="images/rock.png">
+                    </div>
+                    <div class="gameselection" id="paperdiv">
+                        <p class="gameselectiontext" id="paperselection">Paper</p>
+                        <img class="selection" id="paperimg" src="images/paper.png">
+                    </div>
+                    <div class="gameselection" id="scissorsdiv">
+                        <p class="gameselectiontext" id="scissorsselection">Scissors</p>
+                        <img class="selection" id="scissorsimg" src="images/scissors.png">
+                    </div>
+                </div>
+            </div>
+            <div class="playercontainer">
+                <h1 class="playerh1">Computer</h1>
+                <div class="playerinformation">
+                    <div class="playerlogo">
+                        <img class="logo" src="images/robot.png">
+                    </div>
+                    <div class="playerscore">
+                        <p class="score" id="computerscore">Score: 0</p>
+                    </div>
+                </div>
+                <div class="gameselections">
+                    <div class="gameselection" id="computerrockdiv">
+                        <p class="gameselectiontext">Rock</p>
+                        <img class="selection" src="images/rock.png">
+                    </div>
+                    <div class="gameselection" id="computerpaperdiv">
+                        <p class="gameselectiontext">Paper</p>
+                        <img class="selection" src="images/paper.png">
+                    </div>
+                    <div class="gameselection" id="computerscissorsdiv">
+                        <p class="gameselectiontext">Scissors</p>
+                        <img class="selection" src="images/scissors.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottomcontainer" id="bottomcontainer">
+            <img class="winninglogo" id="userwinslogo" src="images/user.png">
+            <img class="winninglogo" id="robotwinslogo" src="images/robot.png">
+            <p class="gameupdates"></p>
+            <a href="index.html" id="endbutton">Play Again?</button>
+        </div>
+    </div>
+</body>
+</html>
+
