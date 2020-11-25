@@ -94,7 +94,7 @@ html,body{
     border-bottom-width: 2px;
     transform: translate(3px, 4px);
 }
-  
+
 .container {
     width: 100%;
     height: 100%;   
@@ -216,4 +216,131 @@ html,body{
 .gameselectiontext {
     text-transform: uppercase;
     font-weight: bold;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .container {
+        width: 100%;
+        height: 100%;   
+        display: flex;
+        justify-content: center;
+    }
+    
+    #endcontainer {
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+    }
+    
+    .gamecontainer {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .topcontainer {
+        color: white;
+        font-size: medium;
+    }
+    
+    .bottomcontainer {
+        display: none;
+        color: white;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .playercontainer {
+        background-color: rgb(70, 70, 70);
+        border-radius: 10px;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin: 10px;
+        width: 300px;
+        height: 250px;
+    }
+    
+    .playerinformation {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .playerlogo {
+        margin-right: 1vw;
+    }
+    
+    .playerh1 {
+        text-align: center;
+        color: white;
+    }
+    
+    .logo {
+        height: 50px;
+        width: 50px;
+    }
+    
+    .winninglogo {
+        display: none;
+        text-align: center;
+        height: 100px;
+        width: 100px;
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .playerscore {
+        color: white;
+    }
+    
+    .gameselections {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .gameselection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+        border-radius: 10px;
+        width: 100px;
+        height: 100px;
+        margin: 5px;
+        border-radius: 3px;
+        box-shadow: 4px 5px 0px black;
+        border-bottom: 2px solid;
+        border-right: 1px solid;
+        transform: translate(-1%, -3%);
+    }
+    
+    .gameselection:hover {
+        background-color: lightgrey;
+        box-shadow: 3px 3px 1px;
+        border-bottom: 2px solid;
+        transform: translate(1%, -1%);
+        transition: all 0.1s ease-in;
+    }
+    
+    .gameselection:active {
+        box-shadow: none;
+        transform: translate(3px, 4px);
+    }
+    
+    .selection {
+        height: 25px;
+        width: 25px;
+    }
+    
+    .gameselectiontext {
+        text-transform: uppercase;
+        font-weight: bold;
+    }
 }
